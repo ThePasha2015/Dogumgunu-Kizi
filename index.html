@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>İyiki Doğdun Birtanem ❤</title>
+  <title>Tuana'nın Doğum Günü</title>
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -64,21 +64,32 @@
   </style>
 </head>
 <body>
-  <h1>🎉 Doğum Günün Kutlu Olsun Abisinin Prensesi 🎉</h1>
+  <h1>🎉 Doğum Günün Kutlu Olsun Tuana 🎉</h1>
   <button onclick="playMusic()">Müziği Aç 🎶</button>
+  <button onclick="pauseMusic()">Müziği Kapat ⏸</button>
   <button onclick="showMessage()">Kutlama Yap 🎂</button>
   <div id="message"></div>
 
-  <footer>Made by Pedox242 ❤</footer>
+  <footer>Hazırlayan: Pedox242</footer>
 
-  <audio id="birthdaySong" loop>
+  <audio id="birthdaySong" loop preload="auto">
     <source src="assets/dogum-gunun-kutlu-olsun-tuana.mp3" type="audio/mpeg">
     Tarayıcınız ses etiketini desteklemiyor.
   </audio>
 
   <script>
     function playMusic() {
-      document.getElementById('birthdaySong').play();
+      const audio = document.getElementById('birthdaySong');
+      audio.currentTime = 0; // en baştan başlat
+      audio.play().catch(err => {
+        console.log("Müzik başlatılamadı:", err);
+      });
+    }
+
+    function pauseMusic() {
+      const audio = document.getElementById('birthdaySong');
+      audio.pause();
+      audio.currentTime = 0; // durunca en başa al
     }
 
     function showMessage() {
